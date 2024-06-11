@@ -3,7 +3,6 @@ import { View, TextInput, Text, TouchableOpacity, StyleSheet, ScrollView, Image,
 import { launchImageLibrary } from 'react-native-image-picker';
 import RNPickerSelect from 'react-native-picker-select';
 import { useNavigation } from '@react-navigation/native';
-// import DateTimePicker from '@react-native-community/datetimepicker';
 
 const AddBusinessForm = () => {
   const navigation = useNavigation();
@@ -74,7 +73,7 @@ const AddBusinessForm = () => {
           onChangeText={(text) => setForm({ ...form, businessName: text })}
         />
         <View style={styles.rowContainer}>
-          <Text style={styles.rowContainer1}>Upload your imagefdfggdgdyf</Text>
+          <Text style={styles.rowContainer1}>Upload your Profile image</Text>
           <TouchableOpacity onPress={() => handleImagePick('logo')} style={styles.imagePicker}>
             <Text>Select logo image</Text>
           </TouchableOpacity>
@@ -113,8 +112,8 @@ const AddBusinessForm = () => {
         <RNPickerSelect
           onValueChange={(value) => setForm({ ...form, state: value })}
           items={[
-            { label: 'State 1', value: 'state1' },
-            { label: 'State 2', value: 'state2' },
+            { label: 'Madhya Pradesh', value: 'Madhya Pradesh' },
+            
           ]}
           style={pickerSelectStyles}
           placeholder={{ label: "Select State", value: null }}
@@ -122,8 +121,11 @@ const AddBusinessForm = () => {
         <RNPickerSelect
           onValueChange={(value) => setForm({ ...form, district: value })}
           items={[
-            { label: 'District 1', value: 'district1' },
-            { label: 'District 2', value: 'district2' },
+            { label: 'Agar-Malva', value: 'Agar-Malva' },
+            { label: ' Alirajpur', value: 'Alirajpur' },
+            { label: 'Ashoknagar', value: 'Ashoknagar' },
+            { label: ' Balaghat', value: 'Balaghat' },
+            { label: ' Barwani', value: 'Barwani' },
           ]}
           style={pickerSelectStyles}
           placeholder={{ label: "Select District", value: null }}
@@ -131,14 +133,17 @@ const AddBusinessForm = () => {
         <RNPickerSelect
           onValueChange={(value) => setForm({ ...form, taluka: value })}
           items={[
-            { label: 'Taluka 1', value: 'taluka1' },
-            { label: 'Taluka 2', value: 'taluka2' },
+            { label: 'Agar', value: 'Agar' },
+            { label: ' Badod', value: 'Badod' },
+            { label: 'Sunser', value: 'Sunser' },
+            { label: ' Jobat', value: 'Jobat' },
+            { label: ' Kotma', value: 'Kotma' },
           ]}
           style={pickerSelectStyles}
           placeholder={{ label: "Select Taluka", value: null }}
         />
         <TextInput
-          style={styles.input}
+          style={styles.inputRegister}
           placeholder="Registered address"
           value={form.address}
           onChangeText={(text) => setForm({ ...form, address: text })}
@@ -156,7 +161,7 @@ const AddBusinessForm = () => {
           onChangeText={(text) => setForm({ ...form, googleMapLink: text })}
         />
 
-        {/* <TouchableOpacity onPress={() => setShowOpeningTimePicker(true)} style={styles.timePicker}>
+        <TouchableOpacity onPress={() => setShowOpeningTimePicker(true)} style={styles.timePicker}>
           <Text>Select Opening Time: {form.openingTime.toLocaleTimeString()}</Text>
         </TouchableOpacity>
         {showOpeningTimePicker && (
@@ -166,7 +171,7 @@ const AddBusinessForm = () => {
             display="default"
             onChange={(event, selectedTime) => handleTimeChange(event, selectedTime, 'openingTime')}
           />
-        )}
+        )}  
 
         <TouchableOpacity onPress={() => setShowClosingTimePicker(true)} style={styles.timePicker}>
           <Text>Select Closing Time: {form.closingTime.toLocaleTimeString()}</Text>
@@ -178,9 +183,9 @@ const AddBusinessForm = () => {
             display="default"
             onChange={(event, selectedTime) => handleTimeChange(event, selectedTime, 'closingTime')}
           />
-        )} */}
+        )}
 
-        {/* <RNPickerSelect
+        <RNPickerSelect 
           onValueChange={(value) => setForm({ ...form, level1Category: value })}
           items={[
             { label: 'Category 1', value: 'category1' },
@@ -197,19 +202,41 @@ const AddBusinessForm = () => {
           ]}
           style={pickerSelectStyles}
           placeholder={{ label: "Select Level 2 Category", value: null }}
-        /> */}
-
-        <TouchableOpacity onPress={() => handleImagePick('primaryImage')} style={styles.imagePicker}>
-          <Text>Select primary image</Text>
-        </TouchableOpacity>
-        {form.primaryImage && <Image source={form.primaryImage} style={styles.image} />}
-        <TouchableOpacity onPress={() => handleImagePick('secondaryImages')} style={styles.imagePicker}>
-          <Text>Select secondary images (max 2)</Text>
-        </TouchableOpacity>
-        {form.secondaryImages.length > 0 && form.secondaryImages.map((img, index) => (
-          <Image key={index} source={img} style={styles.image} />
-        ))}
-
+        />
+         <RNPickerSelect
+          onValueChange={(value) => setForm({ ...form, level2Category: value })}
+          items={[
+            { label: 'Category 1', value: 'category1' },
+            { label: 'Category 2', value: 'category2' },
+          ]}
+          style={pickerSelectStyles}
+          placeholder={{ label: "Select Level 3 Category", value: null }}
+        />
+         <RNPickerSelect
+          onValueChange={(value) => setForm({ ...form, level2Category: value })}
+          items={[
+            { label: 'Category 1', value: 'category1' },
+            { label: 'Category 2', value: 'category2' },
+          ]}
+          style={pickerSelectStyles}
+          placeholder={{ label: "Select Level 24 Category", value: null }}
+        />
+        <View style={styles.rowContainer}>
+          <Text>Select your primary image</Text>
+          <TouchableOpacity onPress={() => handleImagePick('primaryImage')} style={styles.imagePicker}>
+            <Text> primary image</Text>
+          </TouchableOpacity>
+          {form.primaryImage && <Image source={form.primaryImage} style={styles.image} />}
+        </View>
+        <View style={styles.rowContainer}>
+          <Text>Select secondary images</Text>
+          <TouchableOpacity onPress={() => handleImagePick('secondaryImages')} style={styles.imagePicker}>
+            <Text>secondary images</Text>
+          </TouchableOpacity>
+          {form.secondaryImages.length > 0 && form.secondaryImages.map((img, index) => (
+            <Image key={index} source={img} style={styles.image} />
+          ))}
+        </View>
         <TouchableOpacity onPress={handleSubmit} style={styles.button}>
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
@@ -232,6 +259,14 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     borderRadius: 8,
   },
+  inputRegister: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    marginVertical: 5,
+    borderRadius: 8,
+    height: 100
+  },
   imagePicker: {
     marginVertical: 5,
     padding: 15,
@@ -240,8 +275,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 5,
     marginHorizontal: 20,
-    backgroundColor:'white',
-    elevation:5
+    backgroundColor: 'white',
+    elevation: 5
   },
   image: {
     width: 100,
@@ -267,7 +302,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     marginVertical: 10,
-    paddingBottom: 20
+    paddingBottom: 20,
+    marginBottom:50
   },
   buttonText: {
     color: 'white',
@@ -287,12 +323,12 @@ const pickerSelectStyles = StyleSheet.create({
   },
   inputAndroid: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    // borderColor: 'black',
     padding: 10,
     marginVertical: 5,
     borderRadius: 8,
+    
   },
 });
 
 export default AddBusinessForm;
-

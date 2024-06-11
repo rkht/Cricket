@@ -285,38 +285,60 @@
 // export default Matches;
 
 
-
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const DisplayFormData = ({ route }) => {
   const { formData } = route.params;
 
+  // Function to format date to string
+  const formatDate = (date) => {
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Business Information</Text>
-      <Text>Business Name: {formData.businessName}</Text>
-      {formData.logo && <Image source={formData.logo} style={styles.image} />}
-      <Text>Mobile: {formData.mobile}</Text>
-      <Text>Email: {formData.email}</Text>
-      <Text>Contact Person: {formData.contactPerson}</Text>
-      <Text>Website: {formData.website}</Text>
-      <Text>WhatsApp: {formData.whatsapp}</Text>
-      <Text>State: {formData.state}</Text>
-      <Text>District: {formData.district}</Text>
-      <Text>Taluka: {formData.taluka}</Text>
-      <Text>Address: {formData.address}</Text>
-      <Text>Pincode: {formData.pincode}</Text>
-      <Text>Google Map Link: {formData.googleMapLink}</Text>
-      <Text>Opening Time: {formData.openingTime}</Text>
-      <Text>Closing Time: {formData.closingTime}</Text>
-      <Text>Level 1 Category: {formData.level1Category}</Text>
-      <Text>Level 2 Category: {formData.level2Category}</Text>
-      {formData.primaryImage && <Image source={formData.primaryImage} style={styles.image} />}
-      {formData.secondaryImages.length > 0 && formData.secondaryImages.map((img, index) => (
-        <Image key={index} source={img} style={styles.image} />
-      ))}
-    </ScrollView>
+    <SafeAreaView>
+      <View style={{ backgroundColor: "#12F2EC" }}>
+
+        <ScrollView style={styles.container}>
+          <Text style={styles.title}>Didwaniya Bajar</Text>
+          <Text style={styles.textStyle}>Business Name: {formData.businessName}</Text>
+          {formData.logo && <Image source={formData.logo} style={styles.image} />}
+          <Text style={styles.textStyle}>Mobile: {formData.mobile}</Text>
+          <Text style={styles.textStyle}>Email: {formData.email}</Text>
+          <Text style={styles.textStyle}>Contact Person: {formData.contactPerson}</Text>
+          <Text style={styles.textStyle}>Website: {formData.website}</Text>
+          <Text style={styles.textStyle}>WhatsApp: {formData.whatsapp}</Text>
+          <Text style={styles.textStyle}>State: {formData.state}</Text>
+          <Text style={styles.textStyle}>District: {formData.district}</Text>
+          <Text style={styles.textStyle}>Taluka: {formData.taluka}</Text>
+          <Text style={styles.textStyle}>Address: {formData.address}</Text>
+          <Text style={styles.textStyle}>Pincode: {formData.pincode}</Text>
+          <Text style={styles.textStyle}>Google Map Link: {formData.googleMapLink}</Text>
+          <Text style={styles.textStyle}>Opening Time: {formData.openingTime && formatDate(formData.openingTime)}</Text>
+          <Text style={styles.textStyle}>Closing Time: {formData.closingTime && formatDate(formData.closingTime)}</Text>
+          <Text style={styles.textStyle}>Level 1 Category: {formData.level1Category}</Text>
+          <Text style={styles.textStyle}>Level 2 Category: {formData.level2Category}</Text>
+          {formData.primaryImage && <Image source={formData.primaryImage} style={styles.image} />}
+          {formData.secondaryImages.length > 0 && formData.secondaryImages.map((img, index) => (
+            <Image key={index} source={img} style={styles.image} />
+          ))}
+          <View style={styles.imageContainer}>
+            {/* <Image source={require('./placeholder-image.png')} style={styles.image} /> */}
+          </View>
+          <View style={styles.imageContainer1}>
+            <View style={styles.imageContainer2}>
+              {/* <Image source={require('./placeholder-image.png')} style={styles.image} /> */}
+            </View>
+            <View style={styles.imageContainer2}>
+              {/* <Image source={require('./placeholder-image.png')} style={styles.image} /> */}
+            </View>
+          </View>
+
+        </ScrollView>
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -324,11 +346,37 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: '#fff',
+    borderRadius:30,
+    marginBottom:20
+  },
+  imageContainer: {
+    height: 200,
+    marginTop: 16,
+    backgroundColor: 'lightgray',
+    borderRadius: 10,
+  },
+  imageContainer1: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  imageContainer2: {
+    flex: 1,
+    marginHorizontal: 2.5, // Creates a 5px gap between the two boxes
+    height: 150, // Adjust the height as needed
+    backgroundColor: 'lightgray',
+    marginTop: 10,
+    borderRadius: 10,
+    marginBottom:50
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+  },
+  textStyle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
   image: {
     width: 100,
