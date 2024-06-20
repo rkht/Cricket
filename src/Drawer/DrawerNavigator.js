@@ -1,143 +1,174 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
-import { createDrawerNavigator } from '@react-navigation/drawer'
-import BusinesMain from './BusinesMain'
-import BusinessForm from './BusinessForm'
-import BusinessDetail from './BusinessDetail'
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import BusinesMain from './BusinesMain';
+import BusinessForm from './BusinessForm';
+import BusinessDetail from './BusinessDetail';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { NeomorphBox } from 'react-native-neomorph-shadows';
 
-const Drawer = createDrawerNavigator()
+const Drawer = createDrawerNavigator();
 
 const CustomHeader = ({ navigation }) => {
-  // const [searchText, setSearchText] = useState('');
-
   return (
     <View style={styles.container}>
-      <Text style={styles.centeredBoldText}>
-        ADD NEW BUSINESS
-      </Text>
-      <TouchableOpacity>
-        <Text style={styles.text}>DE</Text>
-      </TouchableOpacity>
-
-    </View>
+    <Image
+      source={require('../../Icons/1.png')}
+      style={styles.image}
+    />
+    <Text style={styles.centeredBoldText}>BUSINESS CONTACT</Text>
+    <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+      <NeomorphBox
+        style={{
+          shadowRadius: 3,
+          borderRadius: 100,
+          backgroundColor: '#00C8E0',
+          width: 40,
+          height: 40,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <MaterialIcons name="menu" size={24} color="white" />
+      </NeomorphBox>
+    </TouchableOpacity>
+  </View>
   );
 };
+
 const Custom = ({ navigation }) => {
-  // const [searchText, setSearchText] = useState('');
-
   return (
     <View style={styles.container}>
-      <Text style={styles.centeredBoldText}>
-        BUSINESS MEMBER
-      </Text>
-      <TouchableOpacity>
-        <Text style={styles.text}>DE</Text>
-      </TouchableOpacity>
-
-    </View>
+    <Image
+      source={require('../../Icons/1.png')}
+      style={styles.image}
+    />
+    <Text style={styles.centeredBoldText}>BUSINESS DETAIL'S</Text>
+    <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+      <NeomorphBox
+        style={{
+          shadowRadius: 3,
+          borderRadius: 100,
+          backgroundColor: '#00C8E0',
+          width: 40,
+          height: 40,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <MaterialIcons name="menu" size={24} color="white" />
+      </NeomorphBox>
+    </TouchableOpacity>
+  </View>
   );
 };
+
 const CustomBusiness = ({ navigation }) => {
-  // const [searchText, setSearchText] = useState('');
-
   return (
     <View style={styles.container}>
-      <Text style={styles.centeredBoldText}>
-        BUSINESS HOME
-      </Text>
-      <TouchableOpacity>
-      <Text style={styles.text}>DE</Text>
-
-        {/* <Image
-          source={require('../../Icons/App - Splash screen.png')}  // Replace with your image path
-          style={styles.image}
-        /> */}
+      <Image
+        source={require('../../Icons/1.png')}
+        style={styles.image}
+      />
+      <Text style={styles.centeredBoldText}>ADD NEW BUSINESS</Text>
+      <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+        <NeomorphBox
+          style={{
+            shadowRadius: 3,
+            borderRadius: 100,
+            backgroundColor: '#00C8E0',
+            width: 40,
+            height: 40,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <MaterialIcons name="menu" size={24} color="white" />
+        </NeomorphBox>
       </TouchableOpacity>
-
     </View>
   );
 };
-
 
 const DrawerNavigator = () => {
   return (
-
-
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      drawerPosition="right"
+      drawerStyle={{ backgroundColor: '#04bfd4ff' }}
+      drawerContentOptions={{
+        activeTintColor: '#33cfff',
+        inactiveTintColor: '#000',
+      }}>
       <Drawer.Screen
-        name='BusinesMain'
+        name="BusinesMain"
         component={BusinesMain}
         options={({ navigation }) => ({
           headerTitle: '',
-          elevation: 1,
-          headerLeft: null,
+          headerLeft: '',
+          drawerPosition: 'right',
           headerRight: () => <CustomBusiness navigation={navigation} />,
-          headerStyle: { backgroundColor: '#12F2EC' },
-
+          headerStyle: { backgroundColor: '#04bfd4ff' },
         })}
       />
       <Drawer.Screen
-        name='BusinessForm'
+        name="BusinessForm"
         component={BusinessForm}
         options={({ navigation }) => ({
           headerTitle: '',
-          elevation: 1,
-          headerLeft: null,
+          headerLeft: '',
+          drawerPosition: 'right',
           headerRight: () => <CustomHeader navigation={navigation} />,
-          headerStyle: { backgroundColor: '#12F2EC' },
-
+          headerStyle: { backgroundColor: '#04bfd4ff' },
         })}
       />
-
       <Drawer.Screen
-        name='BusinessDetail'
+        name="BusinessDetail"
         component={BusinessDetail}
         options={({ navigation }) => ({
           headerTitle: '',
-          elevation: 1,
-          headerLeft: null,
+          headerLeft: '',
+          drawerPosition: 'right',
           headerRight: () => <Custom navigation={navigation} />,
-          headerStyle: { backgroundColor: '#12F2EC' },
-
+          headerStyle: { backgroundColor: '#04bfd4ff' },
         })}
       />
-
     </Drawer.Navigator>
-
-  )
-}
-
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingRight: 10,
-    elevation: 1,
-
-
-
   },
   text: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 16, // Adjust font size as needed
     fontWeight: 'bold',
-
+    marginLeft: 10,
+    elevation: 5,
+    borderRadius: 5,
+    borderWidth: 2
   },
   centeredBoldText: {
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 20,
-    marginRight: 70,
+    marginRight: 60, // Adjust margin as needed
     color: 'white',
-
-
+  },
+  centeredBoldText1: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 30,
+    marginRight: 50, // Adjust margin as needed
+    color: 'white',
   },
   image: {
-    width: 23, // Adjust width as needed
-    height: 23, // Adjust height as needed
+    width: 100, // adjust the width as needed
+    height: 100, // adjust the height as needed
+    marginRight: 15, // adjust the margin as needed
+    elevation:5,
+    color:'white'
   },
-
 });
 
-export default DrawerNavigator
+export default DrawerNavigator;

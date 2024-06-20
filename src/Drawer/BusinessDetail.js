@@ -299,7 +299,7 @@ const DisplayFormData = ({ route }) => {
 
   return (
     <SafeAreaView>
-      <View style={{ backgroundColor: "#12F2EC" }}>
+      <View style={{ backgroundColor: "#04bfd4ff" }}>
 
         <ScrollView style={styles.container}>
           <Text style={styles.title}>Didwaniya Bajar</Text>
@@ -347,7 +347,8 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#fff',
     borderRadius:30,
-    marginBottom:20
+    marginBottom:20,
+    color:'black'
   },
   imageContainer: {
     height: 200,
@@ -372,11 +373,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    color:'black'
   },
   textStyle: {
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 10,
+    color:'black'
   },
   image: {
     width: 100,

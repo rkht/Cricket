@@ -56,6 +56,10 @@ apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
  */
 def enableProguardInReleaseBuilds = false
 
+project.ext.react = [
+    entryFile: "index.js",
+    enableHermes: true,  // clean and rebuild if changing
+]
 /**
  * The preferred build flavor of JavaScriptCore (JSC)
  *
